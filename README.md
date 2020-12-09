@@ -1,29 +1,44 @@
-## validate.js
-常用的正则验证封装
+### reg.js
+常用正则验证
 
-## 介绍
-+ 邮箱验证
-+ 手机号码验证
-+ 电话号码验证
-+ URL地址验证
-+ 特殊字符验证
-+ 密码验证(只可以输入字母数字)
-+ 身份证号验证（——15位一代身份证和18位二代身份证都包含在内
-+ QQ号码验证
-+ 微信号码验证
-+ 车牌号码验证
-+ 其他功能待更新...
+### 可验证类型
++ 手机
++ 邮箱
++ 电话
++ 负浮点数
++ 正浮点数
++ 整数
++ 正整数
++ 负整数
++ 中国邮政编码
++ 日期格式
++ 汉字
++ 数字
++ 特殊字符
++ URL
++ 身份证
++ QQ
++ 微信
++ 车牌
++ 更多后续更新...
 
-## 使用
-+ 任意组件引入(示例:手机号码验证)
+### 使用
++ 在需要的地方
 ```js
-import { isMobile } from '@/utils/validate.js'
+const reg = new Reg()
 ```
 
-+ 使用手机号码正则验证方法
++ 验证一个手机号码
 ```js
-let num = 18474747474
-console.log(isMobile(num)) // true
-```
+const mobile = 18475435623
+const val = reg.toRegular(mobile, "手机")
+console.log(val) // true
 
-+ 其他方法请去validate.js文件查看
+const mobile = 9527
+const val = reg.toRegular(mobile, "手机")
+console.log(val) // false
+
+const mobile = 9527
+const val = reg.toRegular(mobile, "姓名")
+console.log(val) // Uncaught Error: xxx类型不存在,请输入正确的正则验证类型!
+```
